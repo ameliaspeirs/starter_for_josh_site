@@ -7,8 +7,34 @@
 <meta name="Description" content="Enter your description here"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
-<title>Title</title>
+<link rel="stylesheet" href="responsive.css">
+<title>
+<?php 
+if (function_exists('is_tag')&& is_tag()){
+  single_tag_title("Tag Archive for &quot;"); echo '&quot; -';}
+elseif (is_archive()){
+  wp_title(''); echo ' Archive - ';
+}
+elseif (is_search()){
+  echo 'Search for &quot;' .wp_specialchars($s). '&quot; - ';
+}
+elseif (!(is_404()) && (is_single()) || (is_page()))
+{
+wp_title(''); echo '-';
+}
+elseif (is_404)) { echo 'Not Found -';}
+if (is_home()){
+  bloginfo('name'); echo ' - '; bloginfo ('description');
+}
+else {
+  bloginfo ('name');
+}
+if ($paged>1){echo ' - page'. $paged;}
+?>
+</title>
+<meta name="description" content="<?php bloginfo('description'); ?>">
+<link rel="shortcut icon" href=""<?php bloginfo('template_directory'); ?>/_/img/favicon/ico">
+
 </head>
 <body>
     <header class="container-fluid">
@@ -50,22 +76,23 @@
 <section class="container-fluid">
 <div class="container">
 <h2> GAMES & LEVEL DESIGNER</h2>
-<p> ...... and particle wizard</p>
-<P> My  name is josh Whitkin. I’m a professional with more than 7 years of industry experience in Games Design, Level design, Scripting and Visual Effects.  What makes me passionate about games is the combination of technology  and creativity, and how multiple disciplines come together to create an interactive experience. Whether I'm designing for puzzle games, 2D platformers or 3D environments.
+<p class="particle"> ...... and particle wizard</p>
+<P class="about-text"> My  name is josh Whitkin. I’m a professional with more than 7 years of industry experience in Games Design, Level design, Scripting and Visual Effects.  What makes me passionate about games is the combination of technology  and creativity, and how multiple disciplines come together to create an interactive experience. Whether I'm designing for puzzle games, 2D platformers or 3D environments.
     I always tell a story.</P>
-
+<div class="blocker"></div>
 </div> <!---container-->
+<?php wp_head(); ?> <!---very important that I added this-->
 </section>
 
 
 <section class="container-fluid">
 <div class="container"> 
-<h3> LATEST ARTICILES</h3>
+<h3 class="text-center"> LATEST ARTICILES</h3>
 <div class="row">
 
 
 </div class="col-md-4">
-<img src="Images/port1.jpg" alt="woman">
+<img class="img-fluid" src="Images/port1.jpg" alt="woman">
 <h4>A PORTRAIT</h4>
 <p> Friday November 2030</p>
 <p> STS has never been shy of seeking new terrains of  investigation. More and  more  STS s cholars are  starting to explore and intervene in the arts.  This object of study  brings  new challenges and  opportunities that we want  to explore in this session.   We would  like to gather first of all simply  new kinds of  knowledge arising from  STS study  of the arts.
@@ -74,11 +101,11 @@
 
 </div class="col-md-4">
 <img src="Images/port2.jpg" alt="woman">
-<h4>A PORTRAIT</h4>
-<p> Friday November 2030</p>
-<p> STS has never been shy of seeking new terrains of  investigation. More and  more  STS s cholars are  starting to explore and intervene in the arts.  This object of study  brings  new challenges and  opportunities that we want  to explore in this session.   We would  like to gather first of all simply  new kinds of  knowledge arising from  STS study  of the arts.
+<h4 class="article-title">A PORTRAIT</h4>
+<p class="date"> Friday November 2030</p>
+<p class="article-p"> STS has never been shy of seeking new terrains of  investigation. More and  more  STS s cholars are  starting to explore and intervene in the arts.  This object of study  brings  new challenges and  opportunities that we want  to explore in this session.   We would  like to gather first of all simply  new kinds of  knowledge arising from  STS study  of the arts.
 </p>
-  <a href="#"  CONTINUE READING ></a>
+  <a class="readmore" href="#"  CONTINUE READING ></a>
 
 </div class="col-md-4">
 <img src="Images/port3.jpg" alt="woman">
